@@ -14,6 +14,9 @@ exports.getMessages = (req, res) => {
 exports.createMessage = (req, res) => {
   const { username } = req.params;
   const { text } = req.body;
+  if (!text) {
+    return res.status(400).send("Text is required");
+  }
   const query = "INSERT INTO messages (username, text) VALUES (?, ?)";
   db.query(query, [username, text], (err, result) => {
     if (err) {
