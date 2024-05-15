@@ -8,7 +8,7 @@ Este es el backend del proyecto, el cual está desarrollado utilizando Express, 
    Clona el repositorio del proyecto desde GitHub:
 
    ```bash
-   git clone https://github.com/tu-usuario/nombre-del-repositorio.git
+   git clone https://github.com/manuelKrivoy/FullStackTp-Backend
    ```
 
 2. **Instalar Dependencias:**
