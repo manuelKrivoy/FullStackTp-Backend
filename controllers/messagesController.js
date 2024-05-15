@@ -2,7 +2,7 @@ const db = require("../db");
 
 exports.getMessages = (req, res) => {
   const { username } = req.params;
-  const query = "SELECT * FROM messages where username= ?";
+  const query = "select * from messages where username = ? ";
   db.query(query, [username], (err, results) => {
     if (err) {
       return res.status(500).send("Error querying the database");
@@ -12,14 +12,36 @@ exports.getMessages = (req, res) => {
 };
 
 exports.createMessage = (req, res) => {
-  const { text } = req.body;
   const { username } = req.params;
-
+  const { text } = req.body;
   const query = "INSERT INTO messages (username, text) VALUES (?, ?)";
   db.query(query, [username, text], (err, result) => {
     if (err) {
       return res.status(500).send("Error creating message");
     }
     res.status(201).send("Message created successfully");
+  });
+};
+
+exports.deleteMessage = (req, res) => {
+  const { id } = req.params;
+  const query = "delete from messages where id = ? ";
+  db.query(query, [id], (err, result) => {
+    if (err) {
+      return res.status(500).send("Error deleting message");
+    }
+    res.status(201).send("Message deleted successfully");
+  });
+};
+
+exports.updateMessage = (req, res) => {
+  const { id } = req.params;
+  const { text } = req.body;
+  const query = "update messages set text = ? where id = ? ";
+  db.query(query, [text, id], (err, result) => {
+    if (err) {
+      return res.status(500).send("Error updating message");
+    }
+    res.status(201).send("Message updated successfully");
   });
 };
