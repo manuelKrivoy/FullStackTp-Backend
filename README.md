@@ -15,7 +15,7 @@ Este es el backend del proyecto, el cual está desarrollado utilizando Express, 
    Ve al directorio del proyecto y ejecuta el siguiente comando para instalar todas las dependencias necesarias:
 
    ```bash
-   cd nombre-del-repositorio
+   cd FullStackTp-Backend
    npm install
    ```
 
